@@ -1,5 +1,5 @@
 app:
-  image: quay.io/testobject/app:1.0.14
+  image: quay.io/testobject/app:1.0.17
   links:
     - testobject-mongo:mongo
   extends:
@@ -10,7 +10,7 @@ app:
     - web.baseurl=http://
 
 monitoring:
-  image: quay.io/testobject/monitoring:1.0.14
+  image: quay.io/testobject/monitoring:1.0.17
   links:
     - testobject-mongo:mongo
   extends:

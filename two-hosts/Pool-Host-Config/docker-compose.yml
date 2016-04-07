@@ -19,7 +19,7 @@ appium-1.5.0:
   container_name: "appium-1.5.0"
 
 ios-pool:
-  image: quay.io/testobject/pool:1.0.14
+  image: quay.io/testobject/pool:1.0.17
   extends:
     file: ../base.yml
     service: ios
@@ -30,7 +30,7 @@ ios-pool:
     - env.host.name=
 
 android-pool:
-  image: quay.io/testobject/pool:1.0.14
+  image: quay.io/testobject/pool:1.0.17
   extends:
     file: ../base.yml
     service: android
