@@ -1,0 +1,8 @@
+mongo-settings:
+  environment:
+    - mongo.db=onpremise-testobject-com
+    - mongo.user=
+    - mongo.password=
+    - mongo.hostname=
+    - mongo.port=27017
+    - db.prefix=onpremise.testobject

@@ -1,0 +1,24 @@
+app:
+  image: quay.io/testobject/app:1.0.14
+  links:
+    - testobject-mongo:mongo
+  extends:
+     file: ../base.yml
+     service: app
+  environment:
+    - env.host.name=
+    - web.baseurl=http://
+
+monitoring:
+  image: quay.io/testobject/monitoring:1.0.14
+  links:
+    - testobject-mongo:mongo
+  extends:
+    file: ../base.yml
+    service: monitoring
+
+testobject-mongo:
+  image: mongo:3.0.6
+  extends:
+    file: base.yml
+    service: testobject-mongo

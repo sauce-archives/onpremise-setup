@@ -1,0 +1,67 @@
+testobject-mongo:
+  container_name: testobject-mongo
+  ports:
+   - "27017:27017"
+  volumes:
+   - /opt/testobject-mongo/db:/data/db
+  restart: always
+
+android:
+  container_name: "testobject-pool-android"
+  extends:
+    file: mongo-settings.yml
+    service: mongo-settings
+  ports:
+    - "8080:8080"
+    - "5000-5040:5000-5040"
+    - "7000-7040:7000-7040"
+    - "7100-7140:7100-7140"
+  volumes:
+   - /dev:/dev
+  net: "host"
+  privileged: true
+
+ios:
+  container_name: "testobject-pool-ios"
+  extends:
+    file: mongo-settings.yml
+    service: mongo-settings
+  ports:
+    - "9090:8080"
+    - "5100-5140:5100-5140"
+    - "5400-5440:5400-5440"
+    - "5500-5540:5500-5540"
+  volumes:
+    - /root/ios-config/testobject.mobileprovision:/root/.testobject_devices/work/testobject.mobileprovision
+    - /root/ios-config/certificate.p12:/root/.testobject_devices/work/certificate.p12
+    - /root/ios-config/id_rsa:/root/.testobject_devices/work/id_rsa
+    - /root/ios-config/id_rsa.pub:/root/.testobject_devices/work/id_rsa.pub
+  environment:
+    - is.ios.pool=true
+    - device.pool.vmlite.license=
+
+app:
+  container_name: "testobject-app"
+  extends:
+    file: mongo-settings.yml
+    service: mongo-settings
+  ports:
+    - "80:8080"
+  environment:
+    - env.http.endpoint.ssl=false
+    - cloudfront.enabled=false
+    - file.mapper.class=org.testobject.persistence.mongo.MongoFileMapper
+    - app.file.mapper.class=org.testobject.persistence.mongo.MongoFileMapper
+    - headless.replay.enabled=true
+    - headless.replay.test.threads=30
+    - descriptor.update.enabled=true
+    - monitoring.enabled=true
+
+monitoring:
+  container_name: "testobject-monitoring"
+  extends:
+    file: mongo-settings.yml
+    service: mongo-settings
+  environment:
+    - file.mapper.class=org.testobject.persistence.mongo.MongoFileMapper
+    - app.file.mapper.class=org.testobject.persistence.mongo.MongoFileMapper
