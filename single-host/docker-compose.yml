@@ -23,6 +23,10 @@ app:
   environment:
     - env.host.name=
     - web.baseurl=http://
+  volumes:
+    # /root/device-pictures should be a directory on the app host
+    # containing device images with names matching device descriptor, file extension .png
+    - /root/device-pictures:/root/.testobject/work/app-org.testobject.file.devices.pictures/device-pictures
 
 monitoring:
   image: quay.io/testobject/monitoring:1.0.17
