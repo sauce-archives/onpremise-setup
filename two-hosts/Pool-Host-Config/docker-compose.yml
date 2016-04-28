@@ -34,6 +34,8 @@ ios-pool:
   environment:
     - server.id=pool-ios-1
     - env.host.name=
+    # Prevent auto-dimming of device screens
+    # - device.pool.brightness=100
 
 android-pool:
   image: quay.io/testobject/pool:1.0.17
@@ -47,3 +49,5 @@ android-pool:
     - device.pool.vmlite.license=
     - env.host.name=
     - server.id=pool-android-1
+    # Prevent auto-dimming of device screens
+    # - device.pool.brightness=100
