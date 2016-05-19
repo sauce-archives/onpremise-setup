@@ -24,5 +24,5 @@ monitoring:
 testobject-mongo:
   image: mongo:3.0.6
   extends:
-    file: base.yml
+    file: ../base.yml
     service: testobject-mongo
