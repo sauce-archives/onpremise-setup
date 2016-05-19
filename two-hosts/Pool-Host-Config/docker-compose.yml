@@ -5,7 +5,7 @@ testobject-android-sdk:
 appium-1.3.7:
   image: quay.io/testobject/appium:1.3.7
   container_name: "appium-1.3.7"
-  volumes: /root/appium/appium/1.4.10
+  volumes: /root/appium/appium/1.3.7
 
 
 appium-1.4.10:
@@ -16,12 +16,12 @@ appium-1.4.10:
 appium-1.4.16:
   image: quay.io/testobject/appium:1.4.16
   container_name: "appium-1.4.16"
-  volumes: /root/appium/appium/1.4.10
+  volumes: /root/appium/appium/1.4.16
 
 appium-1.5.0:
   image: quay.io/testobject/appium:1.5.0
   container_name: "appium-1.5.0"
-  volumes: /root/appium/appium/1.4.10
+  volumes: /root/appium/appium/1.5.0
 
 
 ios-pool:
