@@ -30,6 +30,7 @@ app:
   environment:
     - env.host.name=
     - web.baseurl=http://
+    - appium.baseurl=http://
   volumes:
     - cloud.resources.disabled=false
     # The below volume should be uncommented if you are using self signed certificates
