@@ -32,6 +32,15 @@ app:
     - web.baseurl=http://
     - appium.baseurl=http://
     - cloud.resources.disabled=false
+    # The below values can be left empty
+    - github.issues.oauth.client.id=
+    - github.issues.oauth.client.secret=
+    - github.login.oauth.client.id=
+    - github.login.oauth.client.secret=
+    - google.login.oauth.client.id=
+    - google.login.oauth.client.secret=
+    - linkedin.login.oauth.client.id=
+    - linkedin.login.oauth.client.secret=
   volumes:
     # The below volume should be uncommented if you are using self signed certificates
     # /root/trusted-certificates should be a directory on the app host
