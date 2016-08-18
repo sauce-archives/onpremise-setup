@@ -9,9 +9,11 @@ app:
     - env.host.name=
     - web.baseurl=http://
   volumes:
-    # /root/device-pictures should be a directory on the app host
-    # containing device images with names matching device descriptor, file extension .png
-    - /root/device-pictures:/root/.testobject/work/app-org.testobject.file.devices.pictures/device-pictures
+    - cloud.resources.disabled=false
+    # The below volume should be uncommented if you are using self signed certificates
+    # /root/trusted-certificates should be a directory on the app host
+    # containing self-signed ssl certificates, file extension .cer
+    # - /root/trusted-certificates:/root/.testobject/trusted-certificates
 
 monitoring:
   image: quay.io/testobject/monitoring:1.0.17
