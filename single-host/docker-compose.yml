@@ -5,7 +5,14 @@ testobject-android-sdk:
 appium-1.4.10:
   image: quay.io/testobject/appium:1.4.10
   container_name: "appium-1.4.10"
-  volumes: /root/appium/appium/1.4.10
+  volumes:
+    - /root/appium/appium/1.4.10
+
+appium-1.5.2:
+  image: quay.io/testobject/appium:1.5.2
+  container_name: "appium-1.5.2"
+  volumes:
+    - /root/appium/appium/1.5.2
 
 testobject-mongo:
   image: mongo:3.1.9
@@ -23,13 +30,22 @@ app:
   environment:
     - env.host.name=
     - web.baseurl=http://
+    - appium.baseurl=http://
+    - cloud.resources.disabled=false
+    # The below values can be left empty
+    - github.issues.oauth.client.id=
+    - github.issues.oauth.client.secret=
+    - github.login.oauth.client.id=
+    - github.login.oauth.client.secret=
+    - google.login.oauth.client.id=
+    - google.login.oauth.client.secret=
+    - linkedin.login.oauth.client.id=
+    - linkedin.login.oauth.client.secret=
   volumes:
-    # /root/device-pictures should be a directory on the app host
-    # containing device images with names matching device descriptor, file extension .png
-    - /root/device-pictures:/root/.testobject/work/app-org.testobject.file.devices.pictures/device-pictures
+    # The below volume should be uncommented if you are using self signed certificates
     # /root/trusted-certificates should be a directory on the app host
     # containing self-signed ssl certificates, file extension .cer
-    - /root/trusted-certificates:/root/.testobject/trusted-certificates
+    # - /root/trusted-certificates:/root/.testobject/trusted-certificates
 
 monitoring:
   image: quay.io/testobject/monitoring:1.0.17
@@ -47,6 +63,7 @@ ios-pool:
     service: ios
   volumes_from:
     - appium-1.4.10
+    - appium-1.5.2
   environment:
     - server.id=pool-ios-1
     - env.host.name=
@@ -60,6 +77,7 @@ android-pool:
     service: android
   volumes_from:
     - appium-1.4.10
+    - appium-1.5.2
     - testobject-android-sdk
   environment:
     - device.pool.vmlite.license=
