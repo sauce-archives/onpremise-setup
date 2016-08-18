@@ -5,7 +5,14 @@ testobject-android-sdk:
 appium-1.4.10:
   image: quay.io/testobject/appium:1.4.10
   container_name: "appium-1.4.10"
-  volumes: /root/appium/appium/1.4.10
+  volumes:
+    - /root/appium/appium/1.4.10
+
+appium-1.5.2:
+  image: quay.io/testobject/appium:1.5.2
+  container_name: "appium-1.5.2"
+  volumes:
+    - /root/appium/appium/1.5.2
 
 testobject-mongo:
   image: mongo:3.1.9
@@ -47,6 +54,7 @@ ios-pool:
     service: ios
   volumes_from:
     - appium-1.4.10
+    - appium-1.5.2
   environment:
     - server.id=pool-ios-1
     - env.host.name=
@@ -60,6 +68,7 @@ android-pool:
     service: android
   volumes_from:
     - appium-1.4.10
+    - appium-1.5.2
     - testobject-android-sdk
   environment:
     - device.pool.vmlite.license=
