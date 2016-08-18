@@ -31,8 +31,8 @@ app:
     - env.host.name=
     - web.baseurl=http://
     - appium.baseurl=http://
-  volumes:
     - cloud.resources.disabled=false
+  volumes:
     # The below volume should be uncommented if you are using self signed certificates
     # /root/trusted-certificates should be a directory on the app host
     # containing self-signed ssl certificates, file extension .cer
