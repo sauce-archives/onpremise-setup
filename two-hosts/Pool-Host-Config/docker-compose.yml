@@ -1,14 +1,16 @@
 testobject-android-sdk:
   image: quay.io/testobject/android-sdk-linux
   container_name: "testobject-android-sdk"
-
+  volumes:
+      - /opt/android-sdk-linux
+      
 appium-1.4.10:
   image: quay.io/testobject/appium:1.4.10
   container_name: "appium-1.4.10"
   volumes:
     - /root/appium/appium/1.4.10
 
-appium-1.5.2
+appium-1.5.2:
   image: quay.io/testobject/appium:1.5.2
   container_name: "appium-1.5.2"
   volumes:
