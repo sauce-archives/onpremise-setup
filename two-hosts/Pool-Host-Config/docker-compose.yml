@@ -10,7 +10,7 @@ appium-1.4.10:
   volumes:
     - /root/appium/appium/1.4.10
 
-appium-1.5.2
+appium-1.5.2:
   image: quay.io/testobject/appium:1.5.2
   container_name: "appium-1.5.2"
   volumes:
